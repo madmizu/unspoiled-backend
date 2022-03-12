@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  qty: 1
+  measurement: MyString
+  spoil_date: 2022-03-11
+
+two:
+  name: MyString
+  qty: 1
+  measurement: MyString
+  spoil_date: 2022-03-11
