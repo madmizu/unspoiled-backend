@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_12_035102) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_12_221426) do
   create_table "categories", force: :cascade do |t|
     t.string "type"
     t.datetime "created_at", null: false
@@ -24,6 +24,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_035102) do
     t.date "spoil_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "purchase_id", null: false
+    t.integer "category_id", null: false
+    t.index ["category_id"], name: "index_inventory_items_on_category_id"
+    t.index ["purchase_id"], name: "index_inventory_items_on_purchase_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -39,6 +43,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_035102) do
     t.string "measurement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category_id", null: false
+    t.index ["category_id"], name: "index_shopping_list_items_on_category_id"
   end
 
+  add_foreign_key "inventory_items", "categories"
+  add_foreign_key "inventory_items", "purchases"
+  add_foreign_key "shopping_list_items", "categories"
 end
